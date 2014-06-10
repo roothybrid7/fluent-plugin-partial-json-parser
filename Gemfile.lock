@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    fluent-plugin-partial-json-parser (0.0.3)
+    fluent-plugin-partial-json-parser (0.0.4)
       fluentd (~> 0.10.39)
 
 GEM

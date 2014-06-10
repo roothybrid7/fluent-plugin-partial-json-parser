@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-#require 'fluent/plugin/partial/json/parser/version'
+require 'fluent/plugin/partial_json_parser/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-partial-json-parser"
-  spec.version       = "0.0.3"
+  spec.version       = Fluent::PartialJSONParserPlugin::VERSION
   spec.authors       = ["Satoshi Ohki"]
   spec.email         = ["roothybrid7@gmail.com"]
   spec.summary       = %q{Fluentd ouput plugin to parse value with a JSON structure partial}

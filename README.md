@@ -16,7 +16,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install fluent-plugin-partial-json-parser
+    $ fluent-gem install fluent-plugin-partial-json-parser
 
 ## Usage
 
