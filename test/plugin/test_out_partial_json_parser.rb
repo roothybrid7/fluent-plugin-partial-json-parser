@@ -7,8 +7,8 @@ class PartialJSONParserTest < Test::Unit::TestCase
   end
 
   CONFIG = %[
-    remove_prefix test
-    add_prefix reemit
+    remove_tag_prefix test
+    add_tag_prefix reemit
     keys buz,no_field
   ]
 
@@ -28,14 +28,14 @@ class PartialJSONParserTest < Test::Unit::TestCase
     assert_raise(Fluent::ConfigError) {
       d = create_driver %[
         tag foo
-        add_prefix test
+        add_tag_prefix test
         keys bar,buz
       ]
     }
     assert_raise(Fluent::ConfigError) {
       d = create_driver %[
         tag foo
-        remove_prefix test
+        remove_tag_prefix test
         keys bar,buz
       ]
     }
@@ -52,20 +52,20 @@ class PartialJSONParserTest < Test::Unit::TestCase
     }
     assert_nothing_raised(Fluent::ConfigError) {
       d = create_driver %[
-        add_prefix foo
+        add_tag_prefix foo
         keys bar,buz
       ]
     }
     assert_nothing_raised(Fluent::ConfigError) {
       d = create_driver %[
-        remove_prefix foo
+        remove_tag_prefix foo
         keys bar,buz
       ]
     }
     assert_nothing_raised(Fluent::ConfigError) {
       d = create_driver %[
-        remove_prefix test
-        add_prefix foo
+        remove_tag_prefix test
+        add_tag_prefix foo
         keys bar,buz
       ]
     }

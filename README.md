@@ -29,8 +29,8 @@ if describe config as below,
 ```
 <match test.out>
     type partial_json_parser
-    remove_prefix test
-    add_prefix reemit
+    remove_tag_prefix test
+    add_tag_prefix reemit
     keys buz,no_field
 </match>
 ```
@@ -40,6 +40,16 @@ output a below stream.
 ```
 2014-05-28 12:18:30 +0900 reemit {"foo": 2, "bar": "b", "buz": {"a": {"b": "message"}, "id": 20}}
 ```
+
+## Options
+
+### Parsing
+
+`keys`: Specify record keys with JSON structure value for parsing.
+
+### Tagging
+
+`tag`, `remove_tag_prefix`, `add_tag_prefix`
 
 ## Other Information
 

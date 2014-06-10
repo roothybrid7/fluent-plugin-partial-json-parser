@@ -8,8 +8,8 @@ module Fluent
       val.split(',')
     end
     config_param :tag, :string, :default => nil
-    config_param :remove_prefix, :string, :default => nil
-    config_param :add_prefix, :string, :default => nil
+    config_param :remove_tag_prefix, :string, :default => nil
+    config_param :add_tag_prefix, :string, :default => nil
 
     include SetTagKeyMixin
     config_set_default :include_tag_key, false
@@ -27,25 +27,25 @@ module Fluent
 
     def configure(conf)
       super
-      if @tag.nil? and @remove_prefix.nil? and @add_prefix.nil?
-        raise ConfigError, "partial_json_parser: any of `tag`, `remove_prefix` and `add_prefix` is required"
+      if @tag.nil? and @remove_tag_prefix.nil? and @add_tag_prefix.nil?
+        raise ConfigError, "partial_json_parser: any of `tag`, `remove_tag_prefix` and `add_tag_prefix` is required"
       end
-      if @tag and (@remove_prefix or @add_prefix)
-        raise ConfigError, "both of `tag` and `remove_prefix/add_prefix` must not be specified"
+      if @tag and (@remove_tag_prefix or @add_tag_prefix)
+        raise ConfigError, "both of `tag` and `remove_tag_prefix/add_tag_prefix` must not be specified"
       end
-      if @remove_prefix
-        @removed_prefix = @remove_prefix.chomp('.') + '.'
+      if @remove_tag_prefix
+        @removed_prefix = @remove_tag_prefix.chomp('.') + '.'
         @removed_length = @removed_prefix.length
       end
-      @added_prefix = @add_prefix.chomp('.') + '.' if @add_prefix
+      @added_prefix = @add_tag_prefix.chomp('.') + '.' if @add_tag_prefix
     end
 
     def emit(tag, es, chain)
       if @tag
         tag = @tag
       else
-        tag = tag[@removed_length..-1] if @remove_prefix and tag.start_with?(@removed_prefix)
-        tag = @added_prefix + tag if @add_prefix
+        tag = tag[@removed_length..-1] if @remove_tag_prefix and tag.start_with?(@removed_prefix)
+        tag = @added_prefix + tag if @add_tag_prefix
       end
       es.each do |time, record|
         record = parse(record)
