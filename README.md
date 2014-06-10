@@ -2,6 +2,8 @@
 
 Fluentd ouput plugin to parse value with a JSON structure partial
 
+[![Build Status](https://travis-ci.org/roothybrid7/fluent-plugin-partial-json-parser.svg)](https://travis-ci.org/roothybrid7/fluent-plugin-partial-json-parser) [![Gem Version](https://badge.fury.io/rb/fluent-plugin-partial-json-parser.svg)](http://badge.fury.io/rb/fluent-plugin-partial-json-parser) [![Dependency Status](https://gemnasium.com/roothybrid7/fluent-plugin-partial-json-parser.svg)](https://gemnasium.com/roothybrid7/fluent-plugin-partial-json-parser)
+
 ## Installation
 
 Add this line to your application's Gemfile:
