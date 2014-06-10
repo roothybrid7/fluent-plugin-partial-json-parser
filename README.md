@@ -38,7 +38,7 @@ if describe config as below,
 output a below stream.
 
 ```
-2014-05-28 12:18:30 +0900 reemit {"foo": 2, "bar": "b", "buz": {"a": {"b": "message"}, "id": 20}}
+2014-05-28 12:18:30 +0900 reemit.out {"foo": 2, "bar": "b", "buz": {"a": {"b": "message"}, "id": 20}}
 ```
 
 ## Options
