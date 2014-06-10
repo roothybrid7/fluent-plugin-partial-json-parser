@@ -5,8 +5,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "fluent-plugin-partial-json-parser"
-#  spec.version       = Fluent::Plugin::Partial::Json::Parser::VERSION
-  spec.version       = "0.0.1"
+  spec.version       = "0.0.2"
   spec.authors       = ["Satoshi Ohki"]
   spec.email         = ["roothybrid7@gmail.com"]
   spec.summary       = %q{Fluentd ouput plugin to parse value with a JSON structure partial}

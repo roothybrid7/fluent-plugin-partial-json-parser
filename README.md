@@ -1,4 +1,4 @@
-# Fluent::Plugin::Partial::Json::Parser
+# fluent-plugin-partial-json-parser
 
 Fluentd ouput plugin to parse value with a JSON structure partial
 
@@ -18,7 +18,43 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Now. Assuming that we have a below stream,
+
+```
+2014-05-28 12:18:30 +0900 test.out {"foo": 2, "bar": "b", "buz": "{\"a\":{\"b\":\"message\"},\"id\":20}"}
+```
+
+if describe config as below,
+
+```
+<match test.out>
+    type partial_json_parser
+    remove_prefix test
+    add_prefix reemit
+    keys buz,no_field
+</match>
+```
+
+output a below stream.
+
+```
+2014-05-28 12:18:30 +0900 reemit {"foo": 2, "bar": "b", "buz": {"a": {"b": "message"}, "id": 20}}
+```
+
+## Other Information
+
+Support `include_tag_key` and `include_time_key`.
+
+```
+<match test.out>
+    type partial_json_parser
+    # [...]
+    include_tag_key true
+    tag_key @log_name
+    include_time_key true
+    time_key @timestamp
+</match>
+```
 
 ## Contributing
 
